@@ -1,0 +1,91 @@
+{
+  "admin": {
+    "username": "admin",
+    "passwordHash": "$2b$10$Yc/KEvG28kOK2TWG72fEZe4QS3.kWrScSRzVmbqt9/lIzyG/7P6PG"
+  },
+  "products": [
+    {
+      "id": "prod-1781859466590",
+      "name": "gold",
+      "description": "lskdn",
+      "price": 536,
+      "category": "Rings",
+      "images": [
+        "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600",
+        "/uploads/1781859465388-shopping.webp"
+      ],
+      "colors": [
+        "Gold",
+        "Silver",
+        "Rose Gold"
+      ],
+      "stock": 15,
+      "sku": "RNG-NEW-210"
+    }
+  ],
+  "orders": [],
+  "banners": [],
+  "categories": [
+    {
+      "id": "cat-1781859385692",
+      "name": "Bangle",
+      "tagline": "mdufnsi",
+      "description": "sdfs",
+      "image": "/uploads/1781859372805-shopping.webp",
+      "stats": ""
+    }
+  ],
+  "content": {
+    "aboutUs": "Founded in Tittakudi, Siso shopping began with a singular, clear ambition: to build exquisite, masterfully crafted daily jewelry, fashion accessories, and gifts that express luxury without imposing prohibitive costs. We focus on gorgeous geometric elegance, clean lines, tarnish-free, hypoallergenic materials, and meticulously polished stones. Each piece undergoes rigid high-accuracy QA testing to match premium standards.",
+    "vision": "To become the most dependable and beloved online house for custom fashion jewelry and gift selections, recognized worldwide for outstanding clarity, impeccable human centered service, and ethical conflict-free procurement.",
+    "mission": "We strive to create magnificent, deeply moving statements of self-expression. By combining modern computer-aided luxury design with timeless handcrafting techniques, we craft jewelry suitable for both daily joy and lifetime memories.",
+    "values": [
+      "Ethical Integrity: 100% conflicts-free, responsibly sourced diamonds and metals.",
+      "Impeccable Longevity: Anti-tarnish technology, tarnish-free, waterproof materials.",
+      "Artisanal Excellence: Highly detailed, hand-polished finishes from Master Craftspersons.",
+      "Absolute Inclusivity: Sizing and adjustments made accessible for all backgrounds.",
+      "Customer Centered: Seamless checkout, direct WhatsApp advice, and prompt 48-hour shipment tracking."
+    ],
+    "contactPhone": "+91 8015449688",
+    "contactEmail": "contact@sisoshopping.com",
+    "contactAddress": "Siso shopping, Tittakudi",
+    "whatsappNumber": "8015449688",
+    "faqs": [
+      {
+        "question": "Are your jewelry items water-resistant and tarnish-free?",
+        "answer": "Yes! High-purity stainless steel, sterling silver, and solid gold bases are coated with state-of-the-art PVD vacuum plating. They are waterproof, tarnish-free, sweatproof, and hypoallergenic, making them exceptionally safe for long daily wear."
+      },
+      {
+        "question": "Can I place a highly personalized custom order?",
+        "answer": "Absolutely! Under 'Custom Accessories', we offer premium engraving on circular medallions or pendant backplates. You can supply custom initials, birthdays, or specific coordinates in the 'Order Notes' during checkout."
+      },
+      {
+        "question": "What is your typical order processing and delivery timeline?",
+        "answer": "Standard orders are processed in our design studio within 24 to 48 hours. Domestic delivery takes 3 to 5 business days, and premium international priority shipping takes 5 to 9 days with fully trackable credentials."
+      },
+      {
+        "question": "Do you offer premium gift packaging solutions?",
+        "answer": "Yes, every single parcel arrives standard in our luxury recycled textured paper boxes. If you order from the 'Gift Collections' or specify inside the checkout notes, we wrap them in elegant emerald-green velvet bags and place them with an anniversary ribbon."
+      }
+    ]
+  },
+  "stats": {
+    "pageViews": 1254,
+    "monthlyTraffic": {
+      "2026-01": 180,
+      "2026-02": 260,
+      "2026-03": 380,
+      "2026-04": 520,
+      "2026-05": 710,
+      "2026-06": 954
+    },
+    "monthlyOrders": {
+      "2026-01": 8,
+      "2026-02": 12,
+      "2026-03": 19,
+      "2026-04": 25,
+      "2026-05": 33,
+      "2026-06": 41
+    }
+  }
+}
