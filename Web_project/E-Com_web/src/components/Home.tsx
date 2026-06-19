@@ -241,7 +241,7 @@ export default function Home({
                   </h3>
                   <div className="flex items-center justify-between pt-1">
                     <span className="font-montserrat font-bold text-slate-950 text-sm">
-                      ${p.price.toLocaleString()}
+                      ₹{p.price.toLocaleString()}
                     </span>
                     <span className="text-[10px] text-emerald-600 font-semibold bg-emerald-50 px-2 py-0.5 rounded">
                       Tarnish-Free
@@ -293,7 +293,7 @@ export default function Home({
                   </h3>
                   <div className="flex items-center justify-between pt-1">
                     <span className="font-montserrat font-bold text-slate-950 text-sm">
-                      ${p.price.toLocaleString()}
+                      ₹{p.price.toLocaleString()}
                     </span>
                     <span className="text-[10px] text-indigo-600 font-semibold bg-indigo-50 px-2 py-0.5 rounded">
                       Hypoallergenic

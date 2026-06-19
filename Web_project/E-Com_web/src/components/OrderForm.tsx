@@ -203,7 +203,7 @@ export default function OrderForm({
               <div className="rounded-2xl overflow-hidden h-48 bg-slate-150 relative">
                 <img src={selectedProduct.images[0]} alt="" className="w-full h-full object-cover" />
                 <div className="absolute top-2 left-2 bg-slate-950/80 text-white text-[9px] font-bold uppercase py-0.5 px-2 rounded-full font-mono">
-                  ${selectedProduct.price} tag
+                  ₹{selectedProduct.price} tag
                 </div>
               </div>
 
@@ -240,7 +240,7 @@ export default function OrderForm({
                 <div className="flex items-end justify-between border-t border-slate-200 pt-4 text-xs font-semibold">
                   <span className="text-slate-600 block">Total Price:</span>
                   <span className="font-montserrat font-extrabold text-lg text-slate-950">
-                    ${(selectedProduct.price * form.quantity).toLocaleString()}
+                    ₹{(selectedProduct.price * form.quantity).toLocaleString()}
                   </span>
                 </div>
               </div>

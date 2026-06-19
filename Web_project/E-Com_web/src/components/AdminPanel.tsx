@@ -15,7 +15,7 @@ import {
   Save,
   LogOut,
   Sliders,
-  DollarSign,
+  IndianRupee,
   Package,
   ArrowRight,
   Eye,
@@ -575,7 +575,6 @@ export default function AdminPanel({
                   { id: "orders", label: "Track Orders List", icon: Package, count: orders.length, highlight: pendingOrders > 0 },
                   { id: "categories", label: "Manage Categories", icon: Settings, count: dbCategories.length },
                   { id: "customers", label: "Acquired Customers", icon: Users, count: customers.length },
-                  { id: "banners", label: "Storefront Banners", icon: ImageIcon, count: banners.length },
                   { id: "content", label: "Brand Customization", icon: Sliders }
                 ].map((item) => {
                   const Icon = item.icon;
@@ -643,11 +642,11 @@ export default function AdminPanel({
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                       <div className="bg-white rounded-2xl p-6 border border-slate-100 shadow-xs flex items-center gap-4">
                         <div className="w-12 h-12 rounded-xl bg-rose-50 flex items-center justify-center text-rose-600">
-                          <DollarSign className="w-6 h-6" />
+                          <IndianRupee className="w-6 h-6" />
                         </div>
                         <div>
                           <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">Total Est. Sales</span>
-                          <span className="text-2xl font-bold font-montserrat text-slate-900">${totalRevenue.toLocaleString()} +</span>
+                          <span className="text-2xl font-bold font-montserrat text-slate-900">₹{totalRevenue.toLocaleString()} +</span>
                         </div>
                       </div>
 
@@ -925,7 +924,7 @@ export default function AdminPanel({
                                 {p.category}
                               </span>
                             </td>
-                            <td className="p-4 font-bold font-montserrat text-slate-900">${p.price}</td>
+                            <td className="p-4 font-bold font-montserrat text-slate-900">₹{p.price}</td>
                             <td className="p-4">
                               <span
                                 className={`font-bold ${p.stock <= 5 ? "text-red-500 animate-pulse" : "text-slate-600"}`}
@@ -1096,164 +1095,6 @@ export default function AdminPanel({
                       </tbody>
                     </table>
                   </div>
-                </div>
-              </div>
-            )}
-
-            {/* 5. BANNER MANAGEMENT */}
-            {adminTab === "banners" && (
-              <div className="space-y-6">
-                <div>
-                  <h2 className="font-display font-bold text-2xl text-slate-900">Promotions & Slides scheduling</h2>
-                  <p className="text-xs text-slate-500 font-light mt-1">
-                    Design and edit the promotional alerts, background luxury cover banners, and global active announcements.
-                  </p>
-                </div>
-
-                <div className="space-y-4">
-                  {banners.map((b) => {
-                    const isEditing = editingBannerId === b.id;
-                    return (
-                      <div key={b.id} className="bg-white rounded-2xl p-6 border border-slate-100 shadow-xs relative overflow-hidden">
-                        <div className="absolute top-0 left-0 bottom-0 w-1 bg-rose-500" />
-                        
-                        {isEditing ? (
-                          <div className="space-y-4">
-                            <div>
-                              <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">
-                                Hero Banner Heading (h1)
-                              </label>
-                              <input
-                                type="text"
-                                className="w-full border border-slate-200 rounded-lg px-3 py-2 text-xs"
-                                value={bannerForm.title}
-                                onChange={(e) => setBannerForm({ ...bannerForm, title: e.target.value })}
-                              />
-                            </div>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                              <div>
-                                <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">
-                                  Supporting Subtitle text
-                                </label>
-                                <input
-                                  type="text"
-                                  className="w-full border border-slate-200 rounded-lg px-3 py-2 text-xs"
-                                  value={bannerForm.subtitle}
-                                  onChange={(e) => setBannerForm({ ...bannerForm, subtitle: e.target.value })}
-                                />
-                              </div>
-                              <div>
-                                <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">
-                                  Top Bar / Promo Flash Offer Alert
-                                </label>
-                                <input
-                                  type="text"
-                                  className="w-full border border-slate-200 rounded-lg px-3 py-2 text-xs"
-                                  value={bannerForm.offerText}
-                                  onChange={(e) => setBannerForm({ ...bannerForm, offerText: e.target.value })}
-                                />
-                              </div>
-                            </div>
-                            <div className="space-y-2">
-                              <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">
-                                High-res Image URL references
-                              </label>
-                              <input
-                                type="text"
-                                className="w-full border border-slate-200 rounded-lg px-3 py-2 text-xs"
-                                value={bannerForm.imageUrl}
-                                onChange={(e) => setBannerForm({ ...bannerForm, imageUrl: e.target.value })}
-                              />
-                              <div className="flex items-center gap-2 mt-1">
-                                <label className="bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-[10px] px-3 py-1.5 rounded-lg cursor-pointer transition flex items-center gap-1.5">
-                                  <span className="w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse"></span>
-                                  Upload Banner Pic
-                                  <input
-                                    type="file"
-                                    accept="image/*"
-                                    className="hidden"
-                                    onChange={async (e) => {
-                                      const file = e.target.files?.[0];
-                                      if (file) {
-                                        try {
-                                          const url = await uploadFile(file);
-                                          setBannerForm((prev) => ({
-                                            ...prev,
-                                            imageUrl: url
-                                          }));
-                                        } catch (err: any) {
-                                          alert("Upload failed: " + err.message);
-                                        }
-                                      }
-                                    }}
-                                  />
-                                </label>
-                                {isUploadingImage && (
-                                  <span className="text-[10px] font-mono text-rose-500 animate-pulse">Uploading file...</span>
-                                )}
-                              </div>
-                            </div>
-                            <div className="flex items-center gap-2">
-                              <input
-                                type="checkbox"
-                                id={`banner-active-${b.id}`}
-                                checked={bannerForm.isActive}
-                                onChange={(e) => setBannerForm({ ...bannerForm, isActive: e.target.checked })}
-                              />
-                              <label htmlFor={`banner-active-${b.id}`} className="text-xs text-slate-700">
-                                Set this banner live on the front page index
-                              </label>
-                            </div>
-
-                            <div className="flex gap-2">
-                              <button
-                                onClick={() => handleSaveBanner(b.id)}
-                                className="bg-rose-600 hover:bg-rose-700 text-white text-[11px] font-bold uppercase tracking-wide px-4 py-2 rounded-lg"
-                              >
-                                Save Banner Details
-                              </button>
-                              <button
-                                onClick={() => setEditingBannerId(null)}
-                                className="bg-slate-100 hover:bg-slate-200 text-slate-700 text-[11px] font-semibold px-4 py-2 rounded-lg"
-                              >
-                                Cancel
-                              </button>
-                            </div>
-                          </div>
-                        ) : (
-                          <div className="flex flex-col sm:flex-row gap-6">
-                            <img
-                              src={b.imageUrl}
-                              alt=""
-                              className="w-full sm:w-48 h-32 object-cover rounded-xl bg-slate-50 border border-slate-100"
-                            />
-                            <div className="flex-1 space-y-2">
-                              <div className="flex items-center gap-2">
-                                <span className="font-display font-bold text-lg text-slate-900">{b.title}</span>
-                                <span
-                                  className={`px-2 py-0.5 rounded text-[9px] font-bold uppercase ${
-                                    b.isActive ? "bg-emerald-50 text-emerald-600" : "bg-slate-50 text-slate-400"
-                                  }`}
-                                >
-                                  {b.isActive ? "Live in Display" : "Draft Status"}
-                                </span>
-                              </div>
-                              <p className="text-xs text-slate-500 font-light">{b.subtitle}</p>
-                              <div className="text-[11px] text-rose-600 bg-rose-50/50 p-2 rounded-lg font-medium">
-                                Promo Alert Block: {b.offerText}
-                              </div>
-                              <button
-                                onClick={() => handleEditBanner(b)}
-                                className="mt-2 bg-slate-100 hover:bg-rose-50 hover:text-rose-600 text-slate-600 text-[11px] font-bold uppercase tracking-wide px-3 py-1.5 rounded-lg transition"
-                              >
-                                Edit Slide Design
-                              </button>
-                            </div>
-                          </div>
-                        )}
-                      </div>
-                    );
-                  })}
                 </div>
               </div>
             )}
@@ -1610,7 +1451,7 @@ export default function AdminPanel({
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   <div>
                     <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">
-                      Unit price ($)
+                      Unit price (₹)
                     </label>
                     <input
                       type="number"

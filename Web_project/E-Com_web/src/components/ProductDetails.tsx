@@ -127,10 +127,10 @@ export default function ProductDetails({
 
             <div className="flex items-baseline gap-3 pt-2">
               <span className="font-montserrat font-extrabold text-2xl text-slate-900">
-                ${product.price.toLocaleString()}
+                ₹{product.price.toLocaleString()}
               </span>
               <span className="text-xs text-slate-400 line-through font-montserrat">
-                ${(product.price + Math.floor(product.price * 1.25 * 0.08)).toLocaleString()}
+                ₹{(product.price + Math.floor(product.price * 1.25 * 0.08)).toLocaleString()}
               </span>
               <span className="text-[10px] text-emerald-600 font-bold uppercase bg-emerald-50 px-2.5 py-0.5 rounded-full font-mono">
                 Complementary Velvet box
@@ -247,7 +247,7 @@ export default function ProductDetails({
                       {rp.name}
                     </h3>
                     <span className="font-montserrat font-bold text-slate-950 text-xs block">
-                      ${rp.price.toLocaleString()}
+                      ₹{rp.price.toLocaleString()}
                     </span>
                   </div>
                 </div>
