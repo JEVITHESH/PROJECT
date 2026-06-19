@@ -175,5 +175,11 @@ export const api = {
     return apiFetch("/api/stats/hit", {
       method: "POST"
     });
+  },
+
+  async resetStats(): Promise<{ success: boolean }> {
+    return apiFetch("/api/stats/reset", {
+      method: "POST"
+    });
   }
 };

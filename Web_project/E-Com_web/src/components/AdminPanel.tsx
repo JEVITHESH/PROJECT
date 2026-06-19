@@ -228,7 +228,7 @@ export default function AdminPanel({
       name: "",
       description: "",
       price: 150,
-      category: "Rings",
+      category: categories[0] || "Rings",
       images: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600",
       colors: "Gold, Silver, Rose Gold",
       stock: 15,
@@ -243,7 +243,7 @@ export default function AdminPanel({
       name: p.name,
       description: p.description,
       price: p.price,
-      category: p.category,
+      category: categories.includes(p.category) ? p.category : (categories[0] || p.category),
       images: p.images.join(", "),
       colors: p.colors.join(", "),
       stock: p.stock,
@@ -697,7 +697,7 @@ export default function AdminPanel({
                           </p>
                         </div>
                         
-                        <div className="flex items-center gap-4 text-[11px]">
+                        <div className="flex flex-wrap items-center gap-4 text-[11px]">
                           <div className="flex items-center gap-1.5 font-semibold text-slate-600">
                             <span className="w-3 h-3 rounded bg-blue-500 block" />
                             <span>Website Views</span>
@@ -706,6 +706,22 @@ export default function AdminPanel({
                             <span className="w-3 h-3 rounded bg-rose-500 block" />
                             <span>Placed Orders</span>
                           </div>
+                          <button
+                            type="button"
+                            onClick={async () => {
+                              if (!window.confirm("ARE YOU SURE? This will permanently delete all placed orders and reset page views and traffic data back to 0.")) return;
+                              try {
+                                await api.resetStats();
+                                alert("Data reset successfully! Reloading page...");
+                                window.location.reload();
+                              } catch (e: any) {
+                                alert("Failed to reset metrics: " + e.message);
+                              }
+                            }}
+                            className="bg-red-50 hover:bg-red-100 text-red-600 hover:text-red-700 text-[10px] font-bold uppercase px-2.5 py-1.5 rounded-lg border border-red-100 transition ml-2 shadow-2xs"
+                          >
+                            Reset Metrics & Orders
+                          </button>
                         </div>
                       </div>
 
@@ -1265,6 +1281,36 @@ export default function AdminPanel({
                       value={content.aboutUs}
                       onChange={(e) => setContent({ ...content, aboutUs: e.target.value })}
                     />
+                  </div>
+
+                  <div className="pt-4 border-t border-slate-100">
+                    <h4 className="text-xs font-bold text-slate-700 uppercase mb-1">Store Badges / Landing Page Stats</h4>
+                    <p className="text-[10px] text-slate-500 font-light mb-3">
+                      These values are automatically calculated from active products, categories, and orders in the database.
+                    </p>
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                      <div className="bg-slate-50 p-3 rounded-lg border border-slate-100">
+                        <span className="text-[9px] font-bold text-slate-400 uppercase tracking-wider block">Design Portfolios</span>
+                        <span className="text-sm font-bold font-montserrat text-indigo-600 block mt-0.5">
+                          {content.designPortfolios || "850+"}
+                        </span>
+                        <span className="text-[8px] text-slate-400 mt-0.5 block">(850 + Product Count)</span>
+                      </div>
+                      <div className="bg-slate-50 p-3 rounded-lg border border-slate-100">
+                        <span className="text-[9px] font-bold text-slate-400 uppercase tracking-wider block">Client Reviews</span>
+                        <span className="text-sm font-bold font-montserrat text-rose-600 block mt-0.5">
+                          {content.clientReviews || "15k+"}
+                        </span>
+                        <span className="text-[8px] text-slate-400 mt-0.5 block">(15,000 + Order Count)</span>
+                      </div>
+                      <div className="bg-slate-50 p-3 rounded-lg border border-slate-100">
+                        <span className="text-[9px] font-bold text-slate-400 uppercase tracking-wider block">Artisanal Awards</span>
+                        <span className="text-sm font-bold font-montserrat text-emerald-600 block mt-0.5">
+                          {content.artisanalAwards || "12"}
+                        </span>
+                        <span className="text-[8px] text-slate-400 mt-0.5 block">(12 + Category Count)</span>
+                      </div>
+                    </div>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

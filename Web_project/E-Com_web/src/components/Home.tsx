@@ -39,10 +39,10 @@ export default function Home({
   const newArrivals = products.slice(4, 8);
 
   const stats = [
-    { label: "Design Portfolios", value: "850+", icon: Sparkles },
+    { label: "Design Portfolios", value: content?.designPortfolios || "850+", icon: Sparkles },
     { label: "Ethical conflict certification", value: "100%", icon: ShieldCheck },
-    { label: "Client reviews", value: "15k+", icon: Heart },
-    { label: "Artisanal awards", value: "12", icon: Award }
+    { label: "Client reviews", value: content?.clientReviews || "15k+", icon: Heart },
+    { label: "Artisanal awards", value: content?.artisanalAwards || "12", icon: Award }
   ];
 
   const categoriesList = categories.slice(0, 4).map((c) => ({

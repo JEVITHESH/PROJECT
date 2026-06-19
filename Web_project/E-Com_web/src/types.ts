@@ -46,6 +46,9 @@ export interface WebContent {
   contactAddress: string;
   whatsappNumber: string;
   faqs: { question: string; answer: string }[];
+  designPortfolios?: string;
+  clientReviews?: string;
+  artisanalAwards?: string;
 }
 
 export interface Customer {
