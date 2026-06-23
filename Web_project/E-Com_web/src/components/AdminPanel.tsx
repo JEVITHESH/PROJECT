@@ -646,7 +646,7 @@ export default function AdminPanel({
                         </div>
                         <div>
                           <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">Total Est. Sales</span>
-                          <span className="text-2xl font-bold font-montserrat text-slate-900">₹{totalRevenue.toLocaleString()} +</span>
+                          <span className="text-2xl font-bold font-montserrat text-slate-900">Rs. {totalRevenue.toLocaleString()} +</span>
                         </div>
                       </div>
 
@@ -924,7 +924,7 @@ export default function AdminPanel({
                                 {p.category}
                               </span>
                             </td>
-                            <td className="p-4 font-bold font-montserrat text-slate-900">₹{p.price}</td>
+                            <td className="p-4 font-bold font-montserrat text-slate-900">Rs. {p.price}</td>
                             <td className="p-4">
                               <span
                                 className={`font-bold ${p.stock <= 5 ? "text-red-500 animate-pulse" : "text-slate-600"}`}
@@ -1451,7 +1451,7 @@ export default function AdminPanel({
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   <div>
                     <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">
-                      Unit price (₹)
+                      Unit price (Rs. )
                     </label>
                     <input
                       type="number"

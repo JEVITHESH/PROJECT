@@ -142,7 +142,7 @@ export default function Shop({
                   <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider">
                     Price Ceiling
                   </label>
-                  <span className="text-xs text-slate-900 font-bold font-montserrat">₹{maxPrice}</span>
+                  <span className="text-xs text-slate-900 font-bold font-montserrat">Rs. {maxPrice}</span>
                 </div>
                 <input
                   type="range"
@@ -154,8 +154,8 @@ export default function Shop({
                   onChange={(e) => setMaxPrice(Number(e.target.value))}
                 />
                 <div className="flex justify-between text-[9px] text-slate-400 font-mono mt-1">
-                  <span>Min: ₹50</span>
-                  <span>Max: ₹1500</span>
+                  <span>Min: Rs. 50</span>
+                  <span>Max: Rs. 1500</span>
                 </div>
               </div>
 
@@ -272,10 +272,10 @@ export default function Shop({
                           <div className="flex items-end justify-between pt-1 border-t border-slate-50 mt-2">
                             <div>
                               <span className="text-[10px] text-slate-400 line-through font-montserrat">
-                                ₹{(p.price + Math.floor(p.price * 1.2 * 0.1)).toLocaleString()}
+                                Rs. {(p.price + Math.floor(p.price * 1.2 * 0.1)).toLocaleString()}
                               </span>
                               <span className="font-montserrat font-extrabold text-slate-950 text-base block -mt-1">
-                                ₹{p.price.toLocaleString()}
+                                Rs. {p.price.toLocaleString()}
                               </span>
                             </div>
                             <span className="text-[10px] text-white bg-slate-900 px-2 py-0.5 rounded font-bold font-mono">
