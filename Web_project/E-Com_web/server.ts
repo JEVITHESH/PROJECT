@@ -23,7 +23,7 @@ function isTableNotFoundError(error: any) {
   return error && (error.code === "PGRST205" || error.message?.includes("relation") || error.message?.includes("does not exist"));
 }
 
-const STATS_PATH = path.join(process.cwd(), "data", "stats.json");
+const STATS_PATH = process.env.VERCEL ? "/tmp/stats.json" : path.join(process.cwd(), "data", "stats.json");
 
 function readLocalStats() {
   try {
@@ -162,11 +162,11 @@ app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
 
 // Path to persistent data
-const DB_DIR = path.join(process.cwd(), "data");
+const DB_DIR = process.env.VERCEL ? "/tmp/data" : path.join(process.cwd(), "data");
 const DB_PATH = path.join(DB_DIR, "db.json");
 
 // Path to uploads directory
-const UPLOADS_DIR = path.join(process.cwd(), "uploads");
+const UPLOADS_DIR = process.env.VERCEL ? "/tmp/uploads" : path.join(process.cwd(), "uploads");
 
 // Ensure data directory exists
 if (!fs.existsSync(DB_DIR)) {
@@ -1296,4 +1296,8 @@ async function startServer() {
   });
 }
 
-startServer();
+if (!process.env.VERCEL) {
+  startServer();
+}
+
+export default app;
