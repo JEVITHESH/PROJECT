@@ -12,11 +12,12 @@ dotenv.config();
 const supabaseUrl = process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_KEY || process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
 
-if (!supabaseUrl || !supabaseKey) {
-  throw new Error("Missing Supabase configuration in environment variables.");
+let supabase: any = null;
+if (supabaseUrl && supabaseKey) {
+  supabase = createClient(supabaseUrl, supabaseKey);
+} else {
+  console.warn("Supabase connection not initialized: credentials missing in environment variables.");
 }
-
-const supabase = createClient(supabaseUrl, supabaseKey);
 
 // Check if a Supabase error is a "table not found" error
 function isTableNotFoundError(error: any) {
@@ -160,6 +161,15 @@ const JWT_SECRET = process.env.JWT_SECRET || "aura_secret_jwt_key_2026_premium";
 
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
+
+app.use((req, res, next) => {
+  if (!supabase && req.path.startsWith("/api") && req.path !== "/api/stats/hit") {
+    return res.status(500).json({
+      error: "Supabase connection is not initialized. Please configure SUPABASE_URL and SUPABASE_KEY in Vercel project Environment Variables, and then REDEPLOY the project."
+    });
+  }
+  next();
+});
 
 // Path to persistent data
 const DB_DIR = process.env.VERCEL ? "/tmp/data" : path.join(process.cwd(), "data");
