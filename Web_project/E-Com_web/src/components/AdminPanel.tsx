@@ -93,8 +93,8 @@ export default function AdminPanel({
 
   // Authentication states
   const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false);
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("admin");
+  const [password, setPassword] = useState("admin123");
   const [loginError, setLoginError] = useState("");
   const [isAuthenticating, setIsAuthenticating] = useState(false);
 
@@ -461,7 +461,6 @@ export default function AdminPanel({
               <input
                 type="text"
                 className="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-hidden focus:ring-2 focus:ring-rose-500/20 focus:border-rose-500"
-                placeholder="e.g. admin"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 required
@@ -474,7 +473,6 @@ export default function AdminPanel({
               <input
                 type="password"
                 className="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-hidden focus:ring-2 focus:ring-rose-500/20 focus:border-rose-500"
-                placeholder="e.g. admin123"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
