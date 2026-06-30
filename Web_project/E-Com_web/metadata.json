@@ -1,6 +1,0 @@
-{
-  "name": "Siso shopping",
-  "description": "A premium e-commerce platform for Siso shopping fine jewelry and fashion accessories in Tittakudi.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}
